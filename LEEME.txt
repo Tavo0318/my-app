@@ -1,0 +1,47 @@
+EMPLEABILIDAD Y RED DE EGRESADOS - cómo correrlo
+=================================================
+1. npm install
+2. npm run dev -- --open
+
+ROLES DEL SISTEMA
+------------------
+- Administrador: usuarios, roles y permisos, configuración, registro de actividad.
+- Coordinador de Egresados: registra empresas aliadas, publica y gestiona vacantes,
+  revisa postulaciones, crea encuestas, consulta el directorio y reportes.
+- Egresado: perfil profesional, vacantes, postulaciones y encuestas.
+
+Las empresas ya NO inician sesión: son un módulo que administra el Coordinador
+(y el Administrador). Esto resuelve lo raro de "iniciar sesión como empresa".
+
+CUENTAS DE PRUEBA (correo / contraseña)
+---------------------------------------
+Administrador            : admin@redegresados.edu.co        / Admin123
+Coordinador de Egresados  : coordinador@redegresados.edu.co  / Coordinador123
+Egresado                 : jaime.valencia@redegresados.edu.co / Egresado123
+(hay más egresados de ejemplo: gustavo.pina@, jhoicer.ospino@, etc. @redegresados.edu.co,
+ todos con la misma contraseña Egresado123)
+
+FLUJO SUGERIDO PARA LA SUSTENTACIÓN
+------------------------------------
+1. Entra como Administrador -> ve a "Roles y permisos" y muestra la tabla de
+   qué puede hacer cada rol en cada módulo (ver/crear/actualizar/eliminar).
+2. Sal y entra como Coordinador -> registra una empresa nueva -> publica una
+   vacante para esa empresa.
+3. Sal y entra como Egresado (jaime.valencia@...) -> búscala en Vacantes y
+   postúlate. Responde también la encuesta pendiente.
+4. Vuelve a entrar como Coordinador -> en Postulaciones cambia el estado de
+   esa postulación a "Contratado" -> nota cómo sube la tasa de empleabilidad.
+5. Entra como Administrador -> en Configuración revisa el "Registro de
+   actividad": ahí quedan todas las acciones anteriores con usuario y fecha.
+
+PRUEBAS DE VALIDACIÓN
+----------------------
+- Registrar un egresado con un correo que ya existe -> mensaje de error claro.
+- Registrar con un celular repetido -> mensaje de error.
+- Contraseña incorrecta 5 veces seguidas -> bloqueo de 30 segundos.
+- Como Administrador, en "Roles y permisos" quítale el permiso "Crear" a
+  Coordinador en el módulo Vacantes -> entra como coordinador y el botón
+  "Nueva vacante" ya no aparece.
+
+Para empezar de cero (borrar datos guardados en el navegador):
+F12 > Application > Local Storage > clic derecho > Clear.
